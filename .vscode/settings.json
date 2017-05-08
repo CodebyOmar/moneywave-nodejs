@@ -1,0 +1,6 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    // Controls the font family.
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "Operator Mono"
+}
