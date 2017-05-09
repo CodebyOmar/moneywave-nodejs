@@ -6,7 +6,7 @@ module.exports = {
     /**
      * get wallet balance
      */
-    getWalletBalance: {
+    get: {
         method: 'get',
         endpoint: root
     }

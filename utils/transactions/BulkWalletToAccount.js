@@ -7,7 +7,7 @@ module.exports = {
      * transfer funds from wallet to more than one bank acount
      * @param lock, amount, recipients[], currency, senderName, ref
      */
-    bulkWalletToAccouunt: {
+    transfer: {
         method: 'post',
         endpoint: root,
         params: ['lock', 'amount', 'recipients', 'currency', 'senderName', 'ref']

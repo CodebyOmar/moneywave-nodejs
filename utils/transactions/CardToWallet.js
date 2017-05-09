@@ -8,7 +8,7 @@ module.exports = {
      * @param firstname, lastname, phonenumber, email, recipient, card_no, cvv, expiry_year,
      *        expiry_month, apiKey, amount, fee, redirecturl, medium
      */
-    cardTOWallet: {
+    transfer: {
         method: 'post',
         endpoint: root,
         params: ['firstname', 'lastname', 'phonenumber', 'email', 'recipient', 'card_no', 'cvv', 'expiry_year', 

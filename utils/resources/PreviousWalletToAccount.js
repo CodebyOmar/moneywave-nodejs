@@ -7,7 +7,7 @@ module.exports = {
      * get the previous wallet to accout transfer
      * @param ref
      */
-    previousWalletToAccount: {
+    get: {
         method:'post',
         endpoint: root,
         params: ['ref']

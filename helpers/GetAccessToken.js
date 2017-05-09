@@ -1,7 +1,7 @@
 const request  = require('request'),
       base_url = 'https://moneywave.herokuapp.com';
 
-let getToken = (api_key, secret) => {
+let getToken = (api_key, secret, callback) => {
     const encodedURI = encodeURI([base_url, "/v1/merchant/verify"].join(''));
     let options = {
         method: 'POST',
@@ -14,16 +14,22 @@ let getToken = (api_key, secret) => {
     };
 
     request(options, function(error, response, body){
+
+        let res;
+        
         if(!error)
-        {
+        {   
             if(body.status)
             {
-                return {token: body.token};
+                res = {"token": body.token};
+                return callback(res);
             }else{
-                return {error: body};
+                res = {"error": body};
+                return callback(res);
             }
         }
-        return error;
+        res = {"error":error};
+        return callback(res);
     });
 }
 

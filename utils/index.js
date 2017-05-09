@@ -1,5 +1,5 @@
 const CardTokenization         = require('./resources/CardTokenization')
-      ,GetBanks                = require('./resources/GetBanks')
+      ,Banks                = require('./resources/Banks')
       ,GetWalletBalance        = require('./resources/GetWalletBalance')
       ,PreviousCardToAccount   = require('./resources/PreviousCardToAccount')
       ,PreviousWalletToAccount = require('./resources/PreviousWalletToAccount')
@@ -12,8 +12,8 @@ const CardTokenization         = require('./resources/CardTokenization')
       ,WalletToAccountTransfer    = require('./transactions/WalletToAccountTransfer');
 
 module.exports = {
-    CardTokenization: CardTokenization,
-    GetBanks: GetBanks,
+    Card: CardTokenization,
+    Banks: Banks,
     GetWalletBalance: GetWalletBalance,
     PreviousCardToAccount: PreviousCardToAccount,
     PreviousWalletToAccount: PreviousWalletToAccount,

@@ -4,44 +4,55 @@
  */
 
 const request         = require('request')
-      ,root           = 'https://moneywave.herokuapp.com'
-      ,getAccessToken = require('./helpers/GetAccessToken')
+      ,root            = 'https://moneywave.herokuapp.com'
+      ,getAccessToken  = require('./helpers/GetAccessToken')
       ,utils           = require('./utils/index');
 
-function moneywave(apiKey, secret)
+function Moneywave(apiKey, secret)
 {
-    let tokenRequest = getAccessToken(apiKey, secret);
-    if(tokenRequest.token)
-    {
-        this.token = tokenRequest.token;
-        this.importUtils();
-    }
-    throw new Error("Debug: tokenRequest.error");
+  if(!(this instanceof Moneywave)){ return new Moneywave(apiKey, secret); }
+
+    let tokenRequest = getAccessToken(apiKey, secret, function(response){
+      if(response.token)
+      {
+        Moneywave.prototype.token = response.token;
+        Moneywave.prototype.importUtils();
+      }else{
+        throw new Error(response.error);
+      }
+    }.bind(this));
+    
 }
 
-moneywave.prototype = {
+Moneywave.prototype = {
   implement: (params) => {
     let self = this;
 
     return function() {
-
       //check for token
-      if(self.token === "")
+      if(typeof Moneywave.prototype.token === "undefined")
       {
         throw new Error("Token is required! - check validity of API key or secret");
       }
 
-      //convert passed arguments into array
-      let args = new Array(arguments.length);
-      let l = args.length;
-      for(var i; i < l; i++)
+      //function that converts arguments into array
+      function toArray(obj)
       {
-        args[i] = arguments[i];
+        let newArray = new Array(obj.length);
+        
+        for(let i=0; i < obj.length; ++i)
+        {
+          newArray[i] = obj[i];
+        }
+        return newArray;
       }
-
+      
+      //convert to array
+      let args = toArray(arguments);
+      let l = args.length;
       //check for callback in args and retrive it
       let callback = l > 0 && typeof args.slice(l-1)[0] === "function" ? args.splice(l-1)[0] : "undefined";
-
+      
       let body, qs;
 
       //method checking
@@ -90,23 +101,24 @@ moneywave.prototype = {
             throw new Error("Utils declaration error!");
           }
         }
-      }
+        
 
-      //confirm user passed params to method and replace in endpoint
-      let match, index;
-      for(let i = 0;i < l;i++)
-      {
-        match = paramsInEndpoint[i].replace(/\w/g, '');
-        index = params.args.indexOf(match);
-        if(index != -1)
+        //confirm user passed params to method and replace in endpoint
+        let match, index;
+        for(let i = 0;i < l;i++)
         {
-          if(!args[index])
+          match = paramsInEndpoint[i].replace(/\w/g, '');
+          index = params.args.indexOf(match);
+          if(index != -1)
           {
-            throw new Error("Utils declaration error!");
-          }
+            if(!args[index])
+            {
+              throw new Error("Utils declaration error!");
+            }
 
-          endpoint = endpoint.replace(new RegExp(paramsInEndpoint[i]), args[index]);
-          args.splice(index, 1);
+            endpoint = endpoint.replace(new RegExp(paramsInEndpoint[i]), args[index]);
+            args.splice(index, 1);
+          }
         }
       }
 
@@ -130,7 +142,7 @@ moneywave.prototype = {
         json: true,
         method: method.toUpperCase(),
         headers: {
-          'Authorization': ['Bearer ', self.token].join('')
+          'Authorization': Moneywave.prototype.token
         }
       }
 
@@ -158,19 +170,19 @@ moneywave.prototype = {
     }
   },
 
-  importUtils: function() {
-    var anon;
+  importUtils: () => {
+    let anon;
     // Looping over all utils
-    for (var j in utils) {
+    for (let j in utils) {
       // Creating a surrogate function
       anon = function(){};	
       // Looping over the properties of each resource
-      for(var i in utils[j]) {	
-        anon.prototype[i] = this.implement(utils[j][i]);
+      for(let i in utils[j]) {	
+        anon.prototype[i] = Moneywave.prototype.implement(utils[j][i]);
       }
-      moneywave.prototype[j] = new anon();
+      Moneywave.prototype[j] = new anon();
     }
   }
 };
       
-module.exports = moneywave;
+module.exports = Moneywave;

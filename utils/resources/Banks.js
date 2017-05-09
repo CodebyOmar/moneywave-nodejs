@@ -6,7 +6,7 @@ module.exports = {
     /**
      * get a list of all banks and thier codes
      */
-    banks: {
+    get: {
         method: 'post',
         endpoint: root
     }

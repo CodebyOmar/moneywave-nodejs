@@ -7,7 +7,7 @@ module.exports = {
      * get your previoud card to account transfer
      * @arg id
      */
-    previousCardToAccount: {
+    get: {
         method: 'post',
         endpoint: root,
         args: ['id']

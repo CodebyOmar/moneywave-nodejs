@@ -7,7 +7,7 @@ module.exports = {
      * Get the total amount you will be charge for a transaction
      * @param amount, fee
      */
-    getTotalCardCharge:{
+    get:{
         method: 'post',
         endpoint: root,
         params: ['amount', 'fee']
