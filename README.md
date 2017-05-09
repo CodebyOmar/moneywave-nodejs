@@ -40,26 +40,28 @@ moneywave.CardToAccount.transfer(body, function(error, body){
 });
 ```
 
-### Utils
+### Utils - Resource
 |  {Resource}.{method}                 |               parameters           |   
 |--------------------------------------|------------------------------------|
 | **Card.tokenize**                    |`['card_no', 'expiry_year', 'expiry_month', 'cvv']`|
 | **Banks.get**                        | no parameters                      |
 | **WalletBalance.get**                | no parameters                      |
 | **PreviousCardToAccount.get**        | no parameters                      |
-| **PreviousWalletToAccount.get**      | `['ref']`                          |                                                            
+| **PreviousWalletToAccount.get**      | `['ref']`                          |                                                        
+
+### Utils - Transaction  
 | {Transaction}.{method}               |           parameters               |
 |--------------------------------------|------------------------------------|
 | **FailedTransaction.retry**          | `['id', 'recipient_account_number', 'recipient_bank']`|
-| **ValidateAccountNumber.validate**   | `['account_number', 'bank_code']`|
+| **ValidateAccountNumber.validate**   | `['account_number', 'bank_code']`  |
 | **BulkWalletToAccout.transfer**      | `['lock', 'amount', 'recipients', 'currency', 'senderName', 'ref']`|
 | | | |                                
-| **CardToAccount.transfer**           | `['firstname', 'lastname', 'phonenumber', 'email', 'recipient_bank',`                       |                                      | `'recipient_account_number', 'card_no', 'cvv', 'expiry_year', 'expiry_month', 'apiKey',`|   |                                      | `'amount', 'fee', 'redirecturl', 'medium']`|
+| **CardToAccount.transfer**           | `['firstname', 'lastname', 'phonenumber', 'email', 'recipient_bank',`|                      |                                      | `'recipient_account_number', 'card_no', 'cvv', 'expiry_year', 'expiry_month', 'apiKey',`|   |                                      | `'amount', 'fee', 'redirecturl', 'medium']`|
 | **CardToAccount.validate**           | `['transactionRef', 'authType', 'authValue']`|
-| **CardToAccount.validateVerve**      | `['transactionRef', 'otp']`  |
-| | | |                                                               |
-| **CardToWallet.transfer**            | `['firstname', 'lastname', 'phonenumber', 'email', 'recipient', 'card_no', 'cvv',`          |                                      | `'expiry_year', 'expiry_month', 'apiKey', 'amount', 'fee', 'redirecturl', 'medium']`|
-| **TotalChargeToCard.get**            | `['amount', 'fee']`           |
+| **CardToAccount.validateVerve**      | `['transactionRef', 'otp']`         |
+| | | |                                                               
+| **CardToWallet.transfer**            | `['firstname', 'lastname', 'phonenumber', 'email', 'recipient', 'card_no', 'cvv',`|         |                                      | `'expiry_year', 'expiry_month', 'apiKey', 'amount', 'fee', 'redirecturl', 'medium']`|
+| **TotalChargeToCard.get**            | `['amount', 'fee']`                 |
 | **WalletToAccountTransfer.transfer** | `['lock', 'amount', 'bankcode', 'accountNumber', 'currency', 'senderName', 'ref']`|
 
 This was built according to the documentation on https://moneywave.flutterwave.com/api
