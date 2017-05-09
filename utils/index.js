@@ -14,14 +14,14 @@ const CardTokenization         = require('./resources/CardTokenization')
 module.exports = {
     Card: CardTokenization,
     Banks: Banks,
-    GetWalletBalance: GetWalletBalance,
+    WalletBalance: GetWalletBalance,
     PreviousCardToAccount: PreviousCardToAccount,
     PreviousWalletToAccount: PreviousWalletToAccount,
-    RetryFailedTransaction: RetryFailedTransaction,
+    FailedTransaction: RetryFailedTransaction,
     ValidateAccountNumber: ValidateAccountNumber,
-    BulkWalletToAccoutTransfer: BulkWalletToAccoutTransfer,
+    BulkWalletToAccout: BulkWalletToAccoutTransfer,
     CardToAccount: CardToAccount,
     CardToWallet: CardToWallet,
-    GetTotalChargeToCard: GetTotalChargeToCard,
+    TotalChargeToCard: GetTotalChargeToCard,
     WalletToAccountTransfer: WalletToAccountTransfer
 };
