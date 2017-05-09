@@ -1,6 +1,6 @@
 'use strict';
 
-const root = ""/v1/transfer;
+const root = "/v1/transfer";
 
 module.exports = {
     /**
