@@ -1,5 +1,5 @@
 # moneywave-nodejs
-A library for moneywave API
+A Client library for moneywave API
 
 ### Installation
 ```js 
