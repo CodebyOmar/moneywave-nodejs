@@ -1,27 +1,43 @@
-const CardTokenization         = require('./resources/CardTokenization')
-      ,Banks                = require('./resources/Banks')
-      ,GetWalletBalance        = require('./resources/GetWalletBalance')
-      ,PreviousCardToAccount   = require('./resources/PreviousCardToAccount')
-      ,PreviousWalletToAccount = require('./resources/PreviousWalletToAccount')
-      ,RetryFailedTransaction  = require('./resources/RetryFailedTransaction')
+const  AccountToAccount        = require('./AccountTransfers/AccountToAccount')
+      ,CardToAccount           = require('./AccountTransfers/CardToAccount')
+      ,CardTokenization        = require('./resources/CardTokenization')
+      ,Banks                   = require('./resources/Banks')
+      ,CardEnquiry             = require('./resources/CardEnquiry')
+      ,Report                  = require('./resources/Report')
       ,ValidateAccountNumber   = require('./resources/ValidateAccountNumber')
-      ,BulkWalletToAccoutTransfer = require('./transactions/BulkWalletToAccount')
-      ,CardToAccount              = require('./transactions/CardToAccount')
-      ,CardToWallet               = require('./transactions/CardToWallet')
-      ,GetTotalChargeToCard       = require('./transactions/GetTotalChargeToCard')
-      ,WalletToAccountTransfer    = require('./transactions/WalletToAccountTransfer');
+      ,GetTotalChargeToCard    = require('./transactions/GetTotalChargeToCard')
+      ,PreviousCardToAccount   = require('./transactions/PreviousCardToAccount')
+      ,PreviousWalletToAccount = require('./transactions/PreviousWalletToAccount')
+      ,RetryFailedTransaction  = require('./transactions/RetryFailedTransaction')
+      ,TranStatusCardToAccount = require('./transactions/TransStatusCardToAccount')
+      ,CreateSubwallet         = require('./Wallet/CreateSubWallet')
+      ,GetWalletBalance        = require('./Wallet/GetWalletBalance')
+      ,AccountToWallet         = require('./WalletFunding/AccountToWallet')
+      ,CardToWallet            = require('./WalletFunding/CardToWallet')
+      ,PayWithInternetBanking  = require('./WalletFunding/PayWithInternetBanking')
+      ,BulkWalletToAccoutTransfer = require('./WalletTransfers/BulkWalletToAccount')
+      ,WalletToAccoutTransfer     = require('./WalletTransfers/WalletToAccoutTransfer') 
+      ,WalletToWallet             = require('./WalletTransfers/WalletToWallet');
 
 module.exports = {
-    Card: CardTokenization,
-    Banks: Banks,
-    WalletBalance: GetWalletBalance,
-    PreviousCardToAccount: PreviousCardToAccount,
-    PreviousWalletToAccount: PreviousWalletToAccount,
-    FailedTransaction: RetryFailedTransaction,
-    ValidateAccountNumber: ValidateAccountNumber,
-    BulkWalletToAccout: BulkWalletToAccoutTransfer,
-    CardToAccount: CardToAccount,
-    CardToWallet: CardToWallet,
-    TotalChargeToCard: GetTotalChargeToCard,
-    WalletToAccountTransfer: WalletToAccountTransfer
+    "AccountToAccount":AccountToAccount,
+    "CardToAccount":CardToAccount,
+    "CardTokenization":CardTokenization,
+    "Banks":Banks,
+    "CardEnquiry":CardEnquiry,
+    "Report":Report,
+    "ValidateAccountNumber":ValidateAccountNumber,
+    "GetTotalChargeToCard":GetTotalChargeToCard,
+    "PreviousCardToAccount":PreviousCardToAccount,
+    "PreviousWalletToAccount":PreviousWalletToAccount,
+    "RetryFailedTransaction":RetryFailedTransaction,
+    "TranStatusCardToAccount":TranStatusCardToAccount,
+    "CreateSubwallet":CreateSubwallet,
+    "GetWalletBalance":GetWalletBalance,
+    "AccountToWallet":AccountToWallet,
+    "CardToWallet":CardToWallet,
+    "PayWithInternetBanking":PayWithInternetBanking,
+    "BulkWalletToAccoutTransfer":BulkWalletToAccoutTransfer,
+    "WalletToAccoutTransfer":WalletToAccoutTransfer,
+    "WalletToWallet":WalletToWallet
 };

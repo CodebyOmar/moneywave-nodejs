@@ -5,7 +5,7 @@ const root = "/v1/transfer/{id}";
 module.exports = {
     /**
      * get your previoud card to account transfer
-     * @arg id
+     * @args id
      */
     get: {
         method: 'post',

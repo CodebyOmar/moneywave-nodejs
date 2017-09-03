@@ -1,6 +1,6 @@
 {
   "name": "moneywave-nodejs",
-  "version": "1.1.11",
+  "version": "1.2.12",
   "description": "MoneyWave API Wrapper",
   "main": "index.js",
   "scripts": {

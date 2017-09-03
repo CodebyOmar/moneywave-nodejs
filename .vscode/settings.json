@@ -2,5 +2,5 @@
 {
     // Controls the font family.
     "editor.fontLigatures": true,
-    "editor.fontFamily": "Operator Mono"
+    "editor.fontFamily": "Fira Code"
 }

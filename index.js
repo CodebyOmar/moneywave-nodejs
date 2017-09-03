@@ -5,7 +5,7 @@
 
 const request         = require('request')
       ,root            = 'https://moneywave.herokuapp.com'
-      ,getAccessToken  = require('./helpers/GetAccessToken')
+      ,getAccessToken  = require('./helpers/authentication/GetAccessToken')
       ,utils           = require('./utils/index');
 
 function Moneywave(apiKey, secret)
